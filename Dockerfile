@@ -8,5 +8,5 @@ COPY ./gradlew.bat gradlew.bat
 COPY ./settings.gradle settings.gradle
 RUN ./gradlew dependencies
 RUN ./gradlew build
-COPY ./build/libs/periodontal-service-1.0.0.jar app.jar
+COPY ./build/libs/periapical-service-1.0.0.jar app.jar
 CMD ["java", "-jar", "app.jar"]
