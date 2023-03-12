@@ -1,12 +1,12 @@
-FROM eclipse-temurin:17.0.5_8-jre-alpine
+FROM alpine:latest
+RUN apk --no-cache add openjdk17
 RUN mkdir /app
 WORKDIR /app
 COPY ./gradle gradle
 COPY ./src src
 COPY ./build.gradle build.gradle
-COPY ./gradlew.bat gradlew.bat
+COPY ./gradlew gradlew
 COPY ./settings.gradle settings.gradle
-RUN ./gradlew dependencies
 RUN ./gradlew build
-COPY ./build/libs/periapical-service-1.0.0.jar app.jar
-CMD ["java", "-jar", "app.jar"]
+WORKDIR /app/build/libs
+CMD ["java", "-jar", "periapical-service-1.0.0.jar"]
